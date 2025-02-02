@@ -1,0 +1,148 @@
+* {
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+.navbar {
+    text-align: center;
+    background-color: black;
+    height: 70px;
+    width: 100%;
+    padding: 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    padding: 20px;
+    font-size: 25px;
+    color: white;
+    font-weight: 600;
+    transition: 0.2s;
+    
+}
+.navbar a:hover {
+    text-decoration: underline;
+    font-size: 18px;
+    color: beige;
+}
+
+.events-swiper {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    height: 600px;
+}
+.events-slider {
+    height:100%;
+    width: 100%;
+}
+
+.swiper-slide {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eventinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.eventinfo:hover {
+    transform: translateY(-5px);
+}
+
+.eventinfo img {
+    width: 700px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+}
+
+.eventinfo h3 {
+    font-size: 1.8rem;
+    margin-top: 0.3rem;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: fixed; 
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.swiper-button-next {
+    right: 20px;
+}
+.swiper-button-prev {
+    left: 20px;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 18px; 
+}
+
+.swiper-pagination-bullet {
+    background: white;
+    opacity: 0.5;
+    margin-top: 20px;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .events-swiper {
+        height: 500px;
+
+    }
+    
+    .eventinfo img {
+        height:240px;
+        width: 320px;
+    }
+
+    .eventinfo h3 {
+        font-size: 1.5rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .events-swiper {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .eventinfo h3 {
+        font-size: 1.2rem;
+    }
+
+    .eventinfo img {
+        width: 280px;
+        height: 210px;
+    }
+}
