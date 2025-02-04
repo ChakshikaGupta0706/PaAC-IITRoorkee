@@ -315,25 +315,6 @@ body {
     text-align:center;
 }
 
-/*CSS for the images*/
-.eclipse {
-    width: 300px;
-    margin-top: 5px;
-}
-
-.moon {
-    width: 350px;
-    padding: 5px;
-}
-.astrophotos {
-    display: flex;
-    text-align: center;
-}
-.comet {
-    width: 300px;
-    align-items: center;
-}
-
 /*CSS for Contact*/
 .contact-wrapper {
     color: white;
