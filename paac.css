@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url(background.jpg);
+    background-image: url(backgroundimg.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,7 +14,7 @@ body {
 }
 .navbar {
     text-align: center;
-    backdrop-filter: blur(200px);
+    backdrop-filter: blur(20px);
     background: transparent;
     height: 100px;
     width: 100%;
@@ -24,15 +24,19 @@ body {
 .navbar a {
     text-decoration: none;
     padding: 40px;
-    font-size: 35px;
+    font-size: 30px;
     color: white;
     font-weight: 500;
     transition: 0.2s ease;
     
 }
+
+.navbar i {
+    font-size: 1.5rem;
+}
 .navbar a:hover {
     text-decoration: underline;
-    font-size: 40px;
+    font-size: 33px;
     color: beige;
 }
 
@@ -44,14 +48,21 @@ body {
     color: white;
 }
 
+.events-container {
+    display: flex;
+    flex-direction:column;
+    min-height: calc(100vh - 100px);
+}
+
 .events-swiper {
     max-width: 100%;
     margin: 3rem auto;
     padding: 0 1rem;
-    height: 550px;
+    height: auto;
+    min-height: 400px;
+
 }
 .events-slider {
-    height:100%;
     width: 100%;
 }
 
@@ -59,20 +70,30 @@ body {
     display:flex;
     justify-content: center;
     align-items: center;
+    opacity: 0.7;
+    transition: all 0.8s ease;
+    transform: scale(0.85);
 }
 
 .swiper-slide-active {
     opacity: 1;
+    transform: scale(1);
+    z-index: 10;
+}
+
+.swiper-slide-active .eventinfo img {
+    transform: scale(1);
+    box-shadow: 0 8px 1px rgba(0, 0, 0, 0.3);
 }
 
 .eventinfo {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 1rem;
     transition: transform 0.3s ease;
-    border: 1px solid white;
 }
 
 .eventinfo:hover {
@@ -81,21 +102,61 @@ body {
 }
 
 .eventinfo img {
-    width: 600px;
-    height: 450px;
+    width: 700px;
+    height: 400px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 20px;
     margin-bottom: 0.8rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid white;
+    padding: 4px;
+    transition: all 0.8s ease;
+}
+
+.swiper-slide h3 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.swiper-slide-active h3 {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .eventinfo h3 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     margin-top: 0.3rem;
     color: white;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
+
+.event-details-section {
+    margin: 1rem auto;
+    padding: 0 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.eventinfodetails {
+    display: none;
+    border: 2px solid white;
+    background: rgba(0, 0, 0, 0.1);
+    color: white;
+    font-size: 22px;
+    border-radius:  10px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.eventinfodetails.active {
+    display: block;
+}
+
 
 .swiper-button-next,
 .swiper-button-prev {
@@ -108,6 +169,15 @@ body {
     top: 50%;
     transform: translateY(-50%);
     transition: background-color 0.3s ease;
+    opacity:0.8;
+    transform: scale(0.9);
+    z-index: 5;
+}
+
+.swiper-slide-prev .eventinfo img,
+.swiper-slide-next .eventinfo img {
+    transform: scale(0.95);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .swiper-button-next:hover,
@@ -127,9 +197,14 @@ body {
     font-size: 18px; 
 }
 
+.swiper-pagination {
+    position:relative;
+    margin-top: 1rem;
+}
+
 .swiper-pagination-bullet {
-    background: white;
-    opacity: 0.5;
+    background: beige;
+    opacity: 0.8;
     margin: 0 5px;
 }
 
@@ -140,51 +215,165 @@ body {
 @media (max-width: 1200px) {
     .eventinfo img {
         width: 600px;
-        height: 500px;
+        height: 400px;
     }
 
-    .eventinfo h3 {
-        font-size: 30px;
+    .swiper-slide {
+        transform: scale(0.9);
+    }
+    .swiper-slid-active {
+        transform: scale(1);
+    }
+    .swiper-slide-prev,
+    .swiper-slide-next {
+        transform: scale(0.95);
     }
 }
 
 @media (max-width: 768px) {
-    .events-swiper {
-        height: 500px;
-
-    }
     .eventinfo img {
-        height:240px;
-        width: 320px;
+        width: 100%;
+        height:300px;
+        max-width: 500px;
     }
 
-    .eventinfo h3 {
-        font-size: 1.5rem;
+    .event-details-section {
+        padding: 0 1rem;
     }
-    .navbar a {
-        padding: 20px;
-        font-size: 24px;
+
+    .swiper-slide {
+        transform: scale(0.95);
+    }
+    
+    .swiper-slide-active {
+        transform: scale(1);
+    }
+    
+    .swiper-slide-prev,
+    .swiper-slide-next {
+        transform: scale(0.98);
     }
 
 }
 
 @media (max-width: 480px) {
-    .events-swiper {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .eventinfo h3 {
-        font-size: 1.2rem;
-    }
-
     .eventinfo img {
-        width: 280px;
-        height: 210px;
+        height: 200px;
     }
 
-    .navbar a {
-        padding: 10px;
-        font-size: 20px;
+    .eventinfodetails {
+        font-size: 16px;
+        padding: 15px;
     }
+}
+
+
+/*CSS for Homepage*/
+.Club-Intro {
+    text-align: center;
+    color: white;
+    transition: 0.4s ease-in-out;
+}
+.Club-Intro:hover {
+    transform:translateY(+5px);
+    color: beige;
+}
+
+.Club-Intro img {
+    width: 120px;
+    background: transparent;
+    margin-top: 125px;
+    border-radius: 50%;
+}
+
+.Club-Intro h1 {
+    font-weight: 700;
+    font-size: 70px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
+.Club-Intro {
+    font-weight: 600;
+    font-size: 35px;
+}
+.aboutpaac {
+    color: white;
+    font-size: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    backdrop-filter: blur(10px);
+    margin-top: 205px;
+    margin-left: 50px;
+    margin-right: 50px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.aboutpaac p {
+    text-align:center;
+}
+
+/*CSS for the images*/
+.eclipse {
+    width: 300px;
+    margin-top: 5px;
+}
+
+.moon {
+    width: 350px;
+    padding: 5px;
+}
+.astrophotos {
+    display: flex;
+    text-align: center;
+}
+.comet {
+    width: 300px;
+    align-items: center;
+}
+
+/*CSS for Contact*/
+.contact-wrapper {
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    backdrop-filter: blur(5px);
+    margin-top: 75px;
+    margin-left: 200px;
+    margin-right: 200px;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactdetails {
+    width: 100%;
+    padding: 20px;
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+}
+.contact-wrapper h2 {
+    font-weight: 600;
+    font-size: 35px;
+    text-align: center;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 75px;
+}
+
+.links div, .links a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.links i {
+    margin-right: 10px;
 }
